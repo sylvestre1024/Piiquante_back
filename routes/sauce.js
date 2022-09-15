@@ -11,8 +11,8 @@ const multer = require("../middleware/multer-config");
 const {createSauce} = require("../controllers/sauce/create");
 const {readSauces, readOneSauce} = require("../controllers/sauce/read");
 const {updateSauce} = require("../controllers/sauce/update");
-const { deleteSauce } = require("../controllers/sauce/delete");
-const { likeSauce } = require("../controllers/sauce/likes/like");
+const {deleteSauce} = require("../controllers/sauce/delete");
+const {likeSauce} = require("../controllers/sauce/likes/like");
 
 
 // Creating express Router

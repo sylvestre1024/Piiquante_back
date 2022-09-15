@@ -18,7 +18,7 @@ exports.updateSauce = async (req, res) => {
       fs.unlink(`images/${filename}`, (err) => {})
     }
 
-    // Populate new object with new image or new datas
+    // Populate new object with new image / new datas
     const sauceObject = req.file
       ? {
         ...req.body,

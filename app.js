@@ -4,6 +4,7 @@ const path = require("path");
 const multer = require("multer");
 
 // Security features
+const mongoSanitize = require("express-mongo-sanitize");
 const dotenv = require("dotenv").config('./.env');
 
 // Connection to database MongoDB
@@ -31,7 +32,10 @@ app.use((req, res, next) => {
 });
 
 // request like Content-Type  application/json  and body to object req
-app.use(express.json());
+app.use(express.json({ limit: "1mb" }));
+
+// Prevention of NoSQL injection
+app.use(mongoSanitize());
 
 // Use of routes
 app.use('/images', express.static(path.join(__dirname, 'images')));
