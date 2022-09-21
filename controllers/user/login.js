@@ -19,7 +19,7 @@ exports.login = (req, res, next) => {
                         userId: user._id,
                         token: jwt.sign(
                             { userId: user._id },
-                            `${process.env.JWT_TOKEN}`,
+                            'RANDOM_TOKEN_SECRET',
                             { expiresIn: '24h' }
                         )
                     });
@@ -28,3 +28,8 @@ exports.login = (req, res, next) => {
         })
         .catch(error => res.status(500).json({ error }));
 };
+
+/*
+'RANDOM_TOKEN_SECRET'
+`${process.env.JWT_TOKEN}`
+*/

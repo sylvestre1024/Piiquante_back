@@ -42,7 +42,7 @@ exports.updateSauce = async (req, res) => {
     })
     res.status(200).json({message: "Sauce modifiéé !"})
 
-} catch(err) {
+} catch(error) {
   res.status(400).json({error})
 }
 }
