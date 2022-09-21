@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: "1mb" }));
 
 // Prevention of NoSQL injection
-app.use(mongoSanitize());
+/*app.use(mongoSanitize());*/
 
 // Use of routes
 app.use('/images', express.static(path.join(__dirname, 'images')));
