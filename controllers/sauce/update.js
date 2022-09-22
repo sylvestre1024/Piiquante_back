@@ -6,8 +6,9 @@ const fs = require("fs");
 
 // Method for modifying an existing sauce
 exports.updateSauce = async (req, res) => {
-  try {
-// destructuring req.body
+    try {
+    //console.log("J\'utilise middleware updateSauce !");
+    // destructuring req.body
     const {name, manufacturer, description, mainPepper, heat, userId} = req.body;
 
      // Check if file is updated and delete old one if existing
@@ -36,7 +37,7 @@ exports.updateSauce = async (req, res) => {
       };
 
 // Update sauce data or image
-    await Sauce.findByIdAndUpdate({_id: req.params.id}, {
+      await Sauce.findByIdAndUpdate({ _id: req.params.id }, {
       ...sauceObject,
       _id: req.params.id,
     })

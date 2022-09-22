@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
+  "author": "Sylvestre Le Mao",
   "license": "ISC",
   "bugs": {
     "url": ""
@@ -15,13 +15,18 @@
   "homepage": "",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "crypto-js": "^4.1.1",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^6.4.0",
+    "helmet": "^5.0.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.1",
     "mongoose-unique-validator": "^3.1.0",
-    "multer": "^1.4.4"
+    "multer": "^1.4.4",
+    "password-validator": "^5.3.0",
+    "toobusy-js": "^0.5.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

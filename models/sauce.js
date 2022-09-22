@@ -20,6 +20,7 @@ const sauceSchema = mongoose.Schema({
 });
 */
 
+
 const sauceSchema = mongoose.Schema({
     userId: { type: String },
     name: { type: String },
@@ -31,7 +32,7 @@ const sauceSchema = mongoose.Schema({
     likes: { type: Number },
     dislikes: { type: Number },
     usersLiked: [String],
-    usersDisliked: [String],
+    usersDisliked: [String]
 });
 
 module.exports = mongoose.model("Sauce", sauceSchema);

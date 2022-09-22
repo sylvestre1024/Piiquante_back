@@ -7,6 +7,7 @@ const fs = require("fs");
 // Method for deleting a sauce
 exports.deleteSauce = async (req, res, next) => {
     try {
+    //console.log("J\'utilise middleware deleteSauce !");
     // The exec() method executes a search for a match in a specified string 
     // and returns a result array, or null.
     const sauce = await Sauce.findById({_id: req.params.id}).exec();
