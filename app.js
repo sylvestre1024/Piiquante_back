@@ -1,3 +1,6 @@
+// App.js pour déclarer le fonctionnement général 
+// et les points d'accès liés aux méthodes d'itinérances
+
 // External requires
 const express = require("express");
 const path = require("path");
@@ -6,12 +9,13 @@ const multer = require("multer");
 // Security features
 const mongoSanitize = require("express-mongo-sanitize"); // Helper to sanitize mongodb queries against query selector injections
 const helmet = require("helmet"); // module that helps in securing HTTP headers
-const dotenv = require("dotenv").config('./.env');
+const dotenv = require("dotenv").config('./.env'); // cela permet de ranger nos variables d'environnement discrètement
 
 // Connection to database MongoDB
 const mongoose = require("./db/db");
 
 // Routes used
+// inclusion des méthodes d'itinérances
 const userRoutes = require("./routes/user");
 const sauceRoutes = require("./routes/sauce");
 
@@ -19,6 +23,7 @@ const sauceRoutes = require("./routes/sauce");
 const app = express();
 
 // Setting CORS headers
+// on autorise l'API à être accéder via cette origine d'adressage
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     res.setHeader(
@@ -29,7 +34,7 @@ app.use((req, res, next) => {
         "Access-Control-Allow-Methods",
         "GET, POST, PUT, DELETE, PATCH, OPTIONS"
     );
-    res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+    res.setHeader('Cross-Origin-Resource-Policy', 'same-origin');  // cross-origin pour le contraire
     next();
 });
 
@@ -41,11 +46,14 @@ app.use(helmet({
     crossOriginResourcePolicy: false,
 }));
 
-// Prevention of NoSQL injection
+// Prevention of NoSQL injection in Mongo
 app.use(mongoSanitize());
 
 // Use of routes
-app.use('/images', express.static(path.join(__dirname, 'images')));
+// app.use() pour spécifier le middleware comme fonction de rappel
+// Monte la ou les fonctions middlewarepath spécifiées(*) sur le chemin spécifié
+// (*) : pour nous, nos méthodes d'itinérances de type controlleur qui se base sur nos modèles de data Mongo
+app.use('/images', express.static(path.join(__dirname, 'images'))); // chemin du serveur sur lequel notre point d'entrée 'images' pointera
 app.use("/api/auth", userRoutes);
 app.use("/api/sauces", sauceRoutes);
 
