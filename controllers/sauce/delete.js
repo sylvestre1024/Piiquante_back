@@ -5,7 +5,7 @@ const Sauce = require("../../models/Sauce");
 const fs = require("fs");
 
 // Method for deleting a sauce
-exports.deleteSauce = async (req, res, next) => {
+exports.deleteSauce = async (req, res) => {
     try {
     //console.log("J\'utilise middleware deleteSauce !");
     // The exec() method executes a search for a match in a specified string 

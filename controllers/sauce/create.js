@@ -2,7 +2,7 @@
 const Sauce = require("../../models/Sauce");
 
 // Method for creating a new sauce
-exports.createSauce = async (req, res, next) => { // pas de next
+exports.createSauce = async (req, res) => {
     try {
         //console.log("J\'utilise middleware createSauce !");
         const sauceObject = JSON.parse(req.body.sauce);

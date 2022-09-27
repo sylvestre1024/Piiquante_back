@@ -4,8 +4,8 @@ const path = require("path");
 const multer = require("multer");
 
 // Security features
-const mongoSanitize = require("express-mongo-sanitize");
-const helmet = require("helmet");
+const mongoSanitize = require("express-mongo-sanitize"); // Helper to sanitize mongodb queries against query selector injections
+const helmet = require("helmet"); // module that helps in securing HTTP headers
 const dotenv = require("dotenv").config('./.env');
 
 // Connection to database MongoDB

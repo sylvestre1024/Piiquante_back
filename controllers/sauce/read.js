@@ -4,7 +4,7 @@
 const Sauce = require("../../models/Sauce");
 
 // Method for getting all the sauces
-exports.readSauces = async (req, res) => {  // pas de next
+exports.readSauces = async (req, res) => {
     try {
         //console.log("J\'utilise middleware readSauces !");
         const sauce = await Sauce.find({})
