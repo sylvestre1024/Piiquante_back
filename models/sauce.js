@@ -4,7 +4,9 @@
 const mongoose = require("mongoose");
 
 // Schema for a sauce using mongoose
-
+// SchemaType est juste un objet de configuration pour Mongoose
+// required: booléen ou fonction, si vrai ajoute un validateur requis pour cette propriété
+// default: toute fonction ou, définit une valeur par défaut pour le chemin.
 const sauceSchema = mongoose.Schema({
     userId: { type: String, required: true },
     name: { type: String, required: true },

@@ -23,7 +23,11 @@ const sauceRoutes = require("./routes/sauce");
 const app = express();
 
 // Setting CORS headers
-// on autorise l'API à être accéder via cette origine d'adressage
+/* Ces headers permettent :
+d'accéder à notre API depuis une oringine spécifique ;
+d'ajouter les headers mentionnés aux requêtes envoyées vers notre API (Origin , X-Requested-With , etc.) ;
+d'envoyer des requêtes avec les méthodes mentionnées ( GET ,POST , etc.).
+*/
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     res.setHeader(
@@ -34,7 +38,7 @@ app.use((req, res, next) => {
         "Access-Control-Allow-Methods",
         "GET, POST, PUT, DELETE, PATCH, OPTIONS"
     );
-    res.setHeader('Cross-Origin-Resource-Policy', 'same-origin');  // cross-origin pour le contraire
+    res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');  // same-origin pour le contraire
     next();
 });
 

@@ -1,7 +1,7 @@
 .vs/
 node_modules
 images/
-.env
+/*.env*/
 .envSAVE.example
 packageSAVE.json
 package-lock.json

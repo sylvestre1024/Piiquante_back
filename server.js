@@ -48,5 +48,5 @@ server.on('listening', () => {
     console.log('Listening on ' + bind);
 });
 
-// Listening on port 3000
+// Listening on port
 server.listen(process.env.PORT || process.env.MY_PORT);
