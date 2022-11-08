@@ -30,7 +30,6 @@ exports.createSauce = async (req, res) => {
         //console.log("J\'utilise middleware createSauce !");
         const sauceObject = JSON.parse(req.body.sauce);
         delete sauceObject._id;
-        delete sauceObject._userId; //Never trust a user
         //The Object.create() method creates a new object, 
         // using an existing object as the prototype of the newly created object.
         await Sauce.create({

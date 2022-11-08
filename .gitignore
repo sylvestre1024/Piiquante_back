@@ -2,6 +2,5 @@
 node_modules
 images/
 .env
-.envSAVE.example
 packageSAVE.json
 package-lock.json

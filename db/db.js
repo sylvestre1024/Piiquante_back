@@ -1,6 +1,9 @@
 // External requires
 const mongoose = require("mongoose");
 
+//debug mod of mongoose
+//mongoose.set('debug', true);
+
 // Connection to database
 mongoose
   .connect(
