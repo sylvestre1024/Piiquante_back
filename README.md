@@ -1,36 +1,40 @@
-For this backend project, it is necessary to create an external Mongo-like database (https://cloud.mongodb.com/).
-Then you have to create a new file according to the same model ".env.EXAMPLE",
- the ".env" file and customize it like this:
+For this backend project, it is necessary to create an external Mongo-like database (https://www.mongodb.com/cloud/atlas/register).
 
-# MONGODB
-MONGODB_USER = "yourInfo"
-MONGODB_PASSWORD = "yourInfo"
-MONGODB_CLUSTER_NAME = "yourInfo"
-MONGODB_DATABASE_NAME = "yourInfo"
+Installation :
+go to "Piiquante_back" folder (backend folder),
+create folder "images"
+then you have to create a new file according to the same model ".env.EXAMPLE",
+the ".env" file and customize it like this:
 
-on a Mongo database your connection string usually looks like
+MONGODB_CONNECTION = "mongodb+srv://admin:<password>@cluster0.xsyfk3f.mongodb.net/test"
 
-"mongodb+srv://admin:<password>@cluster0.xtpck2n.mongodb.net/mydatabase1" (example)
+    Replace with your own Mongo database connection
 
-it is transformed, after personalization by breaking down your information like this:
+    There is also a customization of the token value to do: JWT_TOKEN
 
-mongodb+srv://<MONGODB_USER>:<MONGODB_PASSWORD>@<MONGODB_CLUSTER_NAME>.mongodb.net/<MONGODB_DATABASE_NAME>
+    There is also a customization of the connection ports value if you need to change :
+    PORT=3000
+    MY_PORT=3001
 
-There is also a customization of the token value to do: JWT_TOKEN
+    And to finish, there is also a customization of the value of the encryption token to do : CRYPTOJS_SECRET_KEY
 
-There is also a customization of the connection ports value if you need to change :
-PORT=3000
-MY_PORT=3001
-
-And to finish, there is also a customization of the value of the encryption token to do : CRYPTOJS_SECRET_KEY
-
-
-Installation : 
-go to "Piiquante_back" folder, 
+From terminal on backend folder :
 and run command "npm install"
 then run command "npm start"
 
-_________________________________________________________________________________________________________
+---
 
 For the frontend project, the deposit is present at this address :
 https://github.com/OpenClassrooms-Student-Center/Web-Developer-P6
+
+From terminal on Frontend folder :
+
+npm install -g @angular/cli
+
+npm run start
+
+Account creation :
+it is necessary to have:
+
+- a valid email
+- a valid password (lowercase/uppercase + 2 numbers = at least 8 characters) : example "A12bcdef"

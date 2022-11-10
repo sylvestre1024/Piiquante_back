@@ -1,9 +1,9 @@
 //middleware/auth.js
 
 /*
- * Vérifier que l’utilisateur est bien connecté 
+ * VÃ©rifier que l'utilisateur est bien connectÃ© 
  * et transmettre les informations de connexion 
- * aux différentes méthodes qui vont gérer les requêtes.
+ * aux diffÃ©rentes mÃ©thodes qui vont gÃ©rer les requetes.
 */
 
 // External requires
@@ -11,28 +11,31 @@ const jwt = require('jsonwebtoken')
 
 // Method for checking Id using stored token
 /*
-Étant donné que de nombreux problèmes peuvent se produire, 
-nous insérons tout à l'intérieur d'un bloc try...catch.
+Etant donnÃ© que de nombreux problÃ¨mes peuvent se produire, 
+nous insÃ©rons tout Ã  l'intÃ©rieur d'un bloc try...catch.
 
-Nous extrayons le token du header Authorization de la requête entrante. 
-N'oubliez pas qu'il contiendra également le mot-clé Bearer. 
-Nous utilisons donc la fonction split pour tout récupérer après l'espace dans le header. 
-Les erreurs générées ici s'afficheront dans le bloc catch.
+Nous extrayons le token du header Authorization de la requÃªte entrante. 
+N'oubliez pas qu'il contiendra Ã©galement le mot-clÃ© Bearer. 
+Nous utilisons donc la fonction split pour tout rÃ©cupÃ©rer aprÃ¨s l'espace dans le header. 
+Les erreurs gÃ©nÃ©rÃ©es ici s'afficheront dans le bloc catch.
 
-Nous utilisons ensuite la fonction verify pour décoder notre token. 
-Si celui-ci n'est pas valide, une erreur sera générée.
+Nous utilisons ensuite la fonction verify pour dÃ©coder notre token. 
+Si celui-ci n'est pas valide, une erreur sera gÃ©nÃ©rÃ©e.
 
-Nous extrayons l'ID utilisateur de notre token et le rajoutons à l’objet Request 
-afin que nos différentes routes puissent l’exploiter.
+Nous extrayons l'ID utilisateur de notre token et le rajoutons Ã  l'objet Request 
+afin que nos diffÃ©rentes routes puissent l'exploiter.
 
-Dans le cas contraire, tout fonctionne et notre utilisateur est authentifié. 
-Nous passons à l'exécution à l'aide de la fonction next().
+Dans le cas contraire, tout fonctionne et notre utilisateur est authentifiÃ©. 
+Nous passons Ã  l'exÃ©cution Ã  l'aide de la fonction next().
 */
 module.exports = (req, res, next) => {
     try {
+        if (!req.headers.authorization) {
+            throw "Merci de vous connecter";
+        }
         const token = req.headers.authorization.split(" ")[1];
-        // La méthode verify() du package jsonwebtoken permet de vérifier 
-        // la validité d'un token (sur une requête entrante, par exemple).
+        // La mÃ©thode verify() du package jsonwebtoken permet de vÃ©rifier 
+        // la validitÃ© d'un token (sur une requÃªte entrante, par exemple).
         const decodedToken = jwt.verify(token, process.env.JWT_TOKEN);
         const userId = decodedToken.userId;
         req.auth = { userId };
@@ -42,6 +45,6 @@ module.exports = (req, res, next) => {
             next();
         }
     } catch (error) {
-        res.status(401).json({ error: error | "Requête non authentifiée" });
+        res.status(401).json({ error: error | "RequÃªte non authentifiÃ©e" });
     }
 };
