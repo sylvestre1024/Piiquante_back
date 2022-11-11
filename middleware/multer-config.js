@@ -29,6 +29,7 @@ Sa méthode diskStorage()  configure le chemin et le nom de fichier pour les fich
 Sa méthode single()  crée un middleware qui capture les fichiers d'un certain type (passé en argument), 
 et les enregistre au système de fichiers du serveur à l'aide du storage configuré.
 */
+
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
         callback(null, "images");

@@ -9,6 +9,7 @@
 // mais bien distinguer par Bcrypt au final
 const bcrypt = require('bcrypt');
 
+const cryptoJs = require("crypto-js");
 /*
  * Les tokens d'authentification permettent aux utilisateurs de se connecter une seule fois à leur compte. 
  * Au moment de se connecter, ils recevront leur token et le renverront automatiquement à chaque requête par la suite.
@@ -17,24 +18,29 @@ const bcrypt = require('bcrypt');
 */
 const jwt = require('jsonwebtoken');
 
+// Model used
 const User = require('../../models/User');
 
 /*
-* compare de bcrypt pour comparer le mot de passe entré par l'utilisateur avec le hash enregistré dans la BDD :
+* La méthode "compare de bcrypt" compare un string (le mot de passe) entré par l'utilisateur avec le hash enregistré dans la BDD :
 * S'ils ne correspondent pas, nous renvoyons une erreur 401 Unauthorized avec le même message 
 * que lorsque l’utilisateur n’a pas été trouvé, afin de ne pas laisser quelqu’un vérifier 
 * si une autre personne est inscrite sur notre site.
 * S'ils correspondent, les informations d'identification de notre utilisateur sont valides. 
 * Dans ce cas, nous renvoyons une réponse 200 contenant l'ID utilisateur et un token. 
 * Ce token est une chaîne générique qui est par la suite modifié et le crypté
+ * 
+ * Les jetons Web JSON sont une méthode RFC 7519 ouverte et standard de l'industrie 
+ * pour représenter les revendications en toute sécurité entre deux parties.
+*  JWT.IO vous permet de décoder, vérifier et générer JWT.
 */
+
 /*
-* La méthode compare de bcrypt compare un string avec un hash pour, par exemple,
-* vérifier si un mot de passe entré par l'utilisateur correspond à un hash sécurisé enregistré en base de données.
-* Cela montre que même bcrypt ne peut pas décrypter ses propres hashs.
+* La méthode "compare de bcrypt" montre que même bcrypt ne peut pas décrypter ses propres hashs.
 */
 exports.login = (req, res, next) => {
-    User.findOne({ email: req.body.email })
+    const emailCrypt = cryptoJs.HmacSHA256(req.body.email, `${process.env.CRYPTOJS_SECRET_KEY}`).toString();//crypte l'email
+    User.findOne({ email: emailCrypt })
         .then(user => {
             if (!user) {
                 return res.status(401).json({ error: 'Utilisateur non trouvé !' });
@@ -67,10 +73,11 @@ exports.login = (req, res, next) => {
                     contient bien un en-tête « Authorization »
                     avec le mot-clé « Bearer » et une longue chaîne chiffrée. Il s'agit de notre token !
                     */
-                    res.status(200).json({
+                    //Nous renvoyons le token au front-end avec notre réponse.
+                    res.status(200).json({//si correspondance, les informations d'identification utilisateur sont valides. Dans ce cas, nous renvoyons une réponse 200 contenant l'ID utilisateur et un token.
                         userId: user._id,
                         // creation du token
-                        token: jwt.sign(
+                        token: jwt.sign(//la fonction sign de jsonwebtoken pour chiffrer un nouveau token.Ce token contient l'ID de l'utilisateur en tant que payload (les données encodées dans le token).
                             { userId: user._id },
                             `${process.env.JWT_TOKEN}`,
                             { expiresIn: '24h' }

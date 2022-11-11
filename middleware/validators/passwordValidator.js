@@ -1,5 +1,5 @@
 // External requires
-
+/*
 const passwordValidator = require("password-validator");
 
 module.exports = async (req, res, next) => {
@@ -25,3 +25,4 @@ module.exports = async (req, res, next) => {
         res.status(400).json({ message: "Le mot de passe est invalide" })
     }
 }
+*/

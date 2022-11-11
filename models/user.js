@@ -1,6 +1,3 @@
-
-//models/user.js
-
 // External requires
 const mongoose = require("mongoose");
 /*

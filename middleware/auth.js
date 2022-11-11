@@ -1,5 +1,3 @@
-//middleware/auth.js
-
 /*
  * Vérifier que l'utilisateur est bien connecté 
  * et transmettre les informations de connexion 
@@ -28,6 +26,7 @@ afin que nos différentes routes puissent l'exploiter.
 Dans le cas contraire, tout fonctionne et notre utilisateur est authentifié. 
 Nous passons à l'exécution à l'aide de la fonction next().
 */
+
 module.exports = (req, res, next) => {
     try {
         if (!req.headers.authorization) {
