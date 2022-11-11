@@ -24,7 +24,11 @@ exports.updateSauce = (req, res, next) => {
                     }
                     Sauce.updateOne({ _id: req.params.id }, { ...sauceObject, _id: req.params.id })
                         .then(() => res.status(200).json({ message: 'Sauce modifiée avec image !' }))
-                        .catch(error => res.status(400).json({ error }))
+                        //.catch(error => res.status(400).json({ error }))
+                        .catch(error => {
+                            console.log('DATABASE_ERROR_NB_[' + error.statusCode + '] for update entry with data');
+                            res.status(400).json({ error });
+                        });
                 });
             });
     } else { // Si l'image n'est pas modifée
@@ -37,7 +41,11 @@ exports.updateSauce = (req, res, next) => {
                 Sauce.updateOne({ _id: req.params.id }, { ...sauceObject, _id: req.params.id })
                     .then(() =>
                         res.status(200).json({ message: 'Sauce modifiée !' }))
-                    .catch(error => res.status(400).json({ error }))
+                    //.catch(error => res.status(400).json({ error }))
+                    .catch(error => {
+                        console.log('DATABASE_ERROR_NB_[' + error.statusCode + '] for update entry');
+                        res.status(400).json({ error });
+                    });
             })
     }
 };

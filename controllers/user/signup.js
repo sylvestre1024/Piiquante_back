@@ -21,8 +21,9 @@ schemaPASSW
 
 /* Le res objet représente la réponse HTTP qu'une application Express envoie lorsqu'elle reçoit une requête HTTP.
 *  Dans cette documentation et par convention, l'objet est toujours appelé res (et la requête HTTP est req) 
- * next, indiquant la prochaine fonction middleware
+*  next, indiquant la prochaine fonction middleware
 */
+
 exports.signup = (req, res, next) => {
     const emailCrypt = cryptoJs.HmacSHA256(req.body.email, `${process.env.CRYPTOJS_SECRET_KEY}`).toString();//crypt email
 
@@ -35,6 +36,7 @@ exports.signup = (req, res, next) => {
      * la fonction de hachage de bcrypt pour le mot de passe rajoute une demande de « saler » le mot de passe 10 fois.
      * Plus la valeur est élevée, plus l'exécution de la fonction sera longue, et plus le hachage sera sécurisé.
      */
+
     const saltRounds = 10;
     bcrypt
         // demande de hash et passe en paramètre le mot de passe du corps de la requête utilisateur et hache n fois
