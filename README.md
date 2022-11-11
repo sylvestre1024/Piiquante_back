@@ -20,8 +20,9 @@ Checking that the user email is unique in the database with mongoose-unique-vali
 Using environment variables for sensitive data with dotenv
 User authentication by token with jsonwebtoken
 Header protection with helmet
----
 
+
+#Backend project
 For this backend project, it is necessary to create an external Mongo-like database (https://www.mongodb.com/cloud/atlas/register).
 
 Installation :
@@ -44,8 +45,9 @@ From terminal on backend folder :
 and run command "npm install"
 then run command "npm start" OR "nodemon server"
 
+
+#Frontend project
 Front Address : http://localhost:3000
----
 
 For the frontend project, the deposit is present at this address :
 https://github.com/OpenClassrooms-Student-Center/Web-Developer-P6
