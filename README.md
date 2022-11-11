@@ -1,3 +1,28 @@
+
+Scenario:
+Development of a web application called "Piquante" in which users can add their favorite sauces and like or dislike the sauces proposed by other users. The goal is to create the backend of the application, the frontend being already coded and provided.
+
+Goals:
+Backend development in JavaScript
+
+IT technologies :
+Node.js Server
+Framework Express
+MongoDB database
+Hosting on MongoDB Atlas
+DB operations performed with mongoose
+REST-APIs
+OWASP and GDPR security
+
+Security measures put in place :
+User password hash with bcrypt
+Secure database manipulation with mongoose
+Checking that the user email is unique in the database with mongoose-unique-validator
+Using environment variables for sensitive data with dotenv
+User authentication by token with jsonwebtoken
+Header protection with helmet
+---
+
 For this backend project, it is necessary to create an external Mongo-like database (https://www.mongodb.com/cloud/atlas/register).
 
 Installation :
@@ -18,8 +43,9 @@ MONGODB_CONNECTION = "mongodb+srv://admin:<password>@cluster0.xsyfk3f.mongodb.ne
 
 From terminal on backend folder :
 and run command "npm install"
-then run command "npm start"
+then run command "npm start" OR "nodemon server"
 
+Front Address : http://localhost:3000
 ---
 
 For the frontend project, the deposit is present at this address :
@@ -36,3 +62,5 @@ it is necessary to have:
 
 - a valid email
 - a valid password (lowercase/uppercase + 2 numbers = at least 8 characters) : example "A12bcdef"
+
+Back Address : http://localhost:4200

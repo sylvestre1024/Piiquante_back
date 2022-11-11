@@ -11,7 +11,7 @@ const uniqueValidator = require("mongoose-unique-validator");
 // Schema for a user using mongoose
 // S'assurer que deux utilisateurs ne puissent pas utiliser la même adresse e-mail, 
 // nous utiliserons le mot clé unique
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
 });
