@@ -41,6 +41,8 @@ MONGODB_CONNECTION = "mongodb+srv://admin:<password>@cluster0.xsyfk3f.mongodb.ne
     PORT=3000
     MY_PORT=3001
 
+    There is also a customization of the token value to do: CRYPTOJS_SECRET_KEY (Your secret key for encrypting sensitive user data like Email)
+
 From terminal on backend folder :
 and run command "npm install"
 then run command "npm start" OR "nodemon server"
