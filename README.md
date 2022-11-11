@@ -1,4 +1,3 @@
-
 Scenario:
 Development of a web application called "Piquante" in which users can add their favorite sauces and like or dislike the sauces proposed by other users. The goal is to create the backend of the application, the frontend being already coded and provided.
 
