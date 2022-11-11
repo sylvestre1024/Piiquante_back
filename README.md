@@ -44,19 +44,18 @@ MONGODB_CONNECTION = "mongodb+srv://admin:<password>@cluster0.xsyfk3f.mongodb.ne
 From terminal on backend folder :
 and run command "npm install"
 then run command "npm start" OR "nodemon server"
+Backend Address : http://localhost:3000
 
 
 #Frontend project
-Front Address : http://localhost:3000
 
 For the frontend project, the deposit is present at this address :
 https://github.com/OpenClassrooms-Student-Center/Web-Developer-P6
 
 From terminal on Frontend folder :
-
 npm install -g @angular/cli
-
 npm run start
+Front Address : http://localhost:4200
 
 Account creation :
 it is necessary to have:
@@ -64,4 +63,3 @@ it is necessary to have:
 - a valid email
 - a valid password (lowercase/uppercase + 2 numbers = at least 8 characters) : example "A12bcdef"
 
-Back Address : http://localhost:4200
