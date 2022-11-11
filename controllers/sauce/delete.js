@@ -4,7 +4,6 @@ const Sauce = require("../../models/Sauce");
 // External requires
 const fs = require("fs");
 
-
 // Method for deleting a sauce
 exports.deleteSauce = async (req, res) => {
     try {
@@ -30,27 +29,3 @@ exports.deleteSauce = async (req, res) => {
       res.status(500).json({error: err})
     }
 }
-
-
-/*
- exports.deleteSauce = (req, res, next) => {
-
-    // Recherche la sauce dans la base de données selon l'_id de la sauce 
-     Sauce.findOne({ _id: req.params.id })
-         .then(sauce => {
-
-             // Recherche le fichier de l'image
-             const filename = sauce.imageUrl.split('/images/')[1];
-
-             // utilisation de file system pour supprimer l'image dans le dossier /images
-             fs.unlink(`images/${filename}`, () => {
-
-                 // Suppression de la Sauce dans la base de données
-                 Sauce.deleteOne({ _id: req.params.id })
-                     .then(() => res.status(200).json({ message: 'Sauce supprimée !' }))
-                     .catch(error => res.status(400).json({ error }));
-             });
-         })
-         .catch(error => res.status(500).json({ error }));
-}
- */

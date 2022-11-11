@@ -1,4 +1,5 @@
-// App.js pour déclarer le fonctionnement général 
+
+// App.js pour déclarer le fonctionnement général
 // et les points d'accès liés aux méthodes d'itinérances
 
 // External requires
@@ -18,6 +19,9 @@ const mongoose = require("./db/db");
 // inclusion des méthodes d'itinérances
 const userRoutes = require("./routes/user");
 const sauceRoutes = require("./routes/sauce");
+
+// Log features
+const morgan = require("morgan");
 
 // Creating Express application
 const app = express();
@@ -57,6 +61,7 @@ app.use(mongoSanitize());
 // app.use() pour spécifier le middleware comme fonction de rappel
 // Monte la ou les fonctions middlewarepath spécifiées(*) sur le chemin spécifié
 // (*) : pour nous, nos méthodes d'itinérances de type controlleur qui se base sur nos modèles de data Mongo
+
 app.use('/images', express.static(path.join(__dirname, 'images'))); // chemin du serveur sur lequel notre point d'entrée 'images' pointera
 app.use("/api/auth", userRoutes);
 app.use("/api/sauces", sauceRoutes);

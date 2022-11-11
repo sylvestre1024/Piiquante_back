@@ -1,5 +1,3 @@
-//route/sauce.js
-
 // External requires
 const express = require("express");
 
@@ -35,9 +33,9 @@ router.get("/:id", auth, readOneSauce);
 * nous utilisons deux-points : en face du segment dynamique de la route pour la rendre accessible 
 * en tant que paramètre
 */
+
 router.put("/:id", auth, multer, updateSauce);
 router.delete("/:id", auth, deleteSauce);
 router.post("/:id/like", auth, likeSauce);
 
 module.exports = router;
-
