@@ -26,6 +26,9 @@ const morgan = require("morgan");
 // Creating Express application
 const app = express();
 
+// Creating log for errors
+app.use(morgan("dev"));
+
 // Setting CORS headers
 /* Ces headers permettent :
 d'accéder à notre API depuis une oringine spécifique ;

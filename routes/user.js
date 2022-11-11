@@ -4,10 +4,6 @@ const express = require("express");
 // Creating express Router
 const router = express.Router();
 
-// Importing middleware
-//const passwordValidator = require("../middleware/validators/passwordValidator");
-//const emailValidator = require("../middleware/validators/emailValidator");
-
 // Importing methods for sauce
 const {signup} = require('../controllers/user/signup');
 const {login} = require('../controllers/user/login');
@@ -19,7 +15,7 @@ const {login} = require('../controllers/user/login');
 // déclaration des méthodes
 // Pour le routeur, méthode type de requête avec en paramètres : 
 // URI, (n) middleware de service, à la fin la méthode du service final)
-router.post('/signup', signup); //passwordValidator, emailValidator, 
-router.post('/login', login); //emailValidator,
+router.post('/signup', signup);
+router.post('/login', login);
 
 module.exports = router;
