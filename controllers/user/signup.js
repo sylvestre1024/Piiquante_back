@@ -28,9 +28,11 @@ exports.signup = (req, res, next) => {
     const emailCrypt = cryptoJs.HmacSHA256(req.body.email, `${process.env.CRYPTOJS_SECRET_KEY}`).toString();//crypt email
 
     if (!emailValidator.validate(req.body.email)) {
-        throw "Adresse email invalide !" // throw pour envoyer dans la console node.js
+        res.status(400).json({ message : 'adresse email invalide' })
+        //throw "Adresse email invalide !" // throw pour envoyer dans la console node.js
     } else if (!schemaPASSW.validate(req.body.password)) {
-        throw "Mot de passe invalide !"
+        res.status(400).json({ message : 'mot de passe invalide' })
+        //throw "Mot de passe invalide !"
     } else {
     /*
      * la fonction de hachage de bcrypt pour le mot de passe rajoute une demande de « saler » le mot de passe 10 fois.

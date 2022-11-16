@@ -1,22 +1,22 @@
 
-// App.js pour déclarer le fonctionnement général
-// et les points d'accès liés aux méthodes d'itinérances
+// App.js pour dï¿½clarer le fonctionnement gï¿½nï¿½ral
+// et les points d'accï¿½s liï¿½s aux mï¿½thodes d'itinï¿½rances
 
 // External requires
 const express = require("express");
 const path = require("path");
-const multer = require("multer");
+//const multer = require("multer");
 
 // Security features
 const mongoSanitize = require("express-mongo-sanitize"); // Helper to sanitize mongodb queries against query selector injections
 const helmet = require("helmet"); // module that helps in securing HTTP headers
-const dotenv = require("dotenv").config('./.env'); // cela permet de ranger nos variables d'environnement discrètement
+const dotenv = require("dotenv").config('./.env'); // cela permet de ranger nos variables d'environnement discrï¿½tement
 
 // Connection to database MongoDB
 const mongoose = require("./db/db");
 
 // Routes used
-// inclusion des méthodes d'itinérances
+// inclusion des mï¿½thodes d'itinï¿½rances
 const userRoutes = require("./routes/user");
 const sauceRoutes = require("./routes/sauce");
 
@@ -31,9 +31,9 @@ app.use(morgan("dev"));
 
 // Setting CORS headers
 /* Ces headers permettent :
-d'accéder à notre API depuis une oringine spécifique ;
-d'ajouter les headers mentionnés aux requêtes envoyées vers notre API (Origin , X-Requested-With , etc.) ;
-d'envoyer des requêtes avec les méthodes mentionnées ( GET ,POST , etc.).
+d'accï¿½der ï¿½ notre API depuis une oringine spï¿½cifique ;
+d'ajouter les headers mentionnï¿½s aux requï¿½tes envoyï¿½es vers notre API (Origin , X-Requested-With , etc.) ;
+d'envoyer des requï¿½tes avec les mï¿½thodes mentionnï¿½es ( GET ,POST , etc.).
 */
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
@@ -61,11 +61,11 @@ app.use(helmet({
 app.use(mongoSanitize());
 
 // Use of routes
-// app.use() pour spécifier le middleware comme fonction de rappel
-// Monte la ou les fonctions middlewarepath spécifiées(*) sur le chemin spécifié
-// (*) : pour nous, nos méthodes d'itinérances de type controlleur qui se base sur nos modèles de data Mongo
+// app.use() pour spï¿½cifier le middleware comme fonction de rappel
+// Monte la ou les fonctions middlewarepath spï¿½cifiï¿½es(*) sur le chemin spï¿½cifiï¿½
+// (*) : pour nous, nos mï¿½thodes d'itinï¿½rances de type controlleur qui se base sur nos modï¿½les de data Mongo
 
-app.use('/images', express.static(path.join(__dirname, 'images'))); // chemin du serveur sur lequel notre point d'entrée 'images' pointera
+app.use('/images', express.static(path.join(__dirname, 'images'))); // chemin du serveur sur lequel notre point d'entrï¿½e 'images' pointera
 app.use("/api/auth", userRoutes);
 app.use("/api/sauces", sauceRoutes);
 

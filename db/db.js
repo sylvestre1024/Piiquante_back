@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 // Connection to database
 mongoose
     .connect(
-        `${process.env.MONGODB_CONNECTION}` + '?retryWrites=true&w=majority'
+        `${process.env.MONGODB_CONNECTION}`
     )
   .then(() => console.log("Connexion à MongoDB réussie !"))
   .catch((err) => console.log("Connexion à MongoDB échouée !", err));
